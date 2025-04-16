@@ -4,12 +4,10 @@ import OrderContents from "./components/OrderContents"
 import OrderTotals from "./components/OrderTotals"
 import TipForm from "./components/TipForm"
 import { menuItems } from "./data/db"
-import useOrder from "./hooks/useOrder" // global state
 import { initialState, orderReducer } from "./reducers/order-reducer"
 
 function App() {
 
-  const { order, tip, setTip, addItem, removeItem, saveOrder } = useOrder()
   const [state, dispatch] = useReducer(orderReducer, initialState)
 
   return (
@@ -46,7 +44,7 @@ function App() {
               <OrderTotals
                 order={state.order}
                 tip={state.tip}
-                saveOrder={saveOrder}
+                dispatch={dispatch}
               />
             </>
           ) : (
